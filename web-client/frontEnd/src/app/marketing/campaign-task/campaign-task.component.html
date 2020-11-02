@@ -1,0 +1,27 @@
+<div class="card">
+    <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+            <mat-card-title>{{task.name}}</mat-card-title>
+            <mat-card-subtitle>{{task.status.replace("_", "")}}
+                <div *ngIf="userToken.role === 'EMPLOYEE'" class="statusChange">
+                    <form (ngSubmit)="onStatusChange()" #cs="ngForm">
+                        <select ngModel name="changeStatus" id="changeStatus" required>
+                            <option value="OPEN">Open</option>
+                            <option value="IN_PROGRESS">In progress</option>
+                            <option value="COMPLETED">Completed</option>
+                        </select>
+                        <button mat-raised-button type="submit" [disabled]="!cs.valid">Change status</button>
+                    </form>
+                </div>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Description: {{task.description}}</p>
+            <p *ngIf="userToken.role === 'MARKETING_MANAGER'">Employee assigned (id) - {{task.userid}}</p>
+            <p *ngIf="userToken.role === 'EMPLOYEE'">This task is for campaign - {{task.campaign.name}}</p>
+            <p>Due date {{task.dueDate.toString().split("T")[0]}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+    </mat-card>
+</div>

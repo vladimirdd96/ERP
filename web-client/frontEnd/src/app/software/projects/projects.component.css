@@ -1,0 +1,28 @@
+.container {
+  margin: 20px auto;
+  padding: 20px 40px;
+  /* width: 80%; */
+}
+.project-list {
+  padding: 20px 40px;
+}
+hr {
+  width: calc(100% - 80px);
+  margin: 20px auto;
+}
+.project-child {
+  width:50%;
+  padding: 40px 40px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+  .project-child {
+    width: 100%;
+    padding: 0px !important;
+  }
+
+  .container {
+    padding: 5px;
+  }
+}

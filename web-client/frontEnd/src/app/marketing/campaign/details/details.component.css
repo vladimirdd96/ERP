@@ -1,0 +1,29 @@
+.card {
+  padding: 10px;
+}
+
+.content {
+  padding: 16px;
+}
+
+.form-group {
+  padding: 10px;
+}
+
+.kpiReport {
+  padding: 5px;
+}
+
+.error {
+  width: 70%;
+  border: 2px solid red;
+  text-align: center;
+  padding: 10px 30px;
+  /* border-radius: 10px; */
+  background-color: #ed456c;
+}
+
+.error p {
+  margin: 0;
+  color: #ffffff;
+}

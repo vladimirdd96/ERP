@@ -1,0 +1,36 @@
+<div class="card" *ngIf="userDepartment === 'MARKETING'">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Marketing</mat-card-title>
+            <mat-card-subtitle>Department</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://1bc.bg/images/newspost_images/marketing_template.jpg" alt="marketing image">
+        <mat-card-content>
+            <p>
+                This is our marketing department.
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button routerLink="/marketing">Visit</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<br>
+<div class="card" *ngIf="userDepartment === 'SOFTWARE'">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Software</mat-card-title>
+            <mat-card-subtitle>Department</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://www.symmetrymagazine.org/sites/default/files/styles/2015_hero/public/images/standard/better-software-2.jpg?itok=q9kG6rii" alt="software image">
+        <mat-card-content>
+            <p>
+                This is our software department.
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button routerLink="/software">Visit</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<router-outlet></router-outlet>

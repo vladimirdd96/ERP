@@ -1,0 +1,94 @@
+<form
+  (ngSubmit)="onNewProject(newProjectForm)"
+  #newProjectForm="ngForm"
+  *ngIf="!editMode"
+>
+  <h2>Create new project</h2>
+  <div class="form-group">
+    <label for="name">Project name:</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      class="form-control"
+      ngModel
+      required
+      minlength="6"
+    />
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <input
+      type="text"
+      id="description"
+      name="description"
+      class="form-control"
+      ngModel
+      required
+      minlength="10"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="pmRatePerHour">Project manager rate:</label>
+    <input
+      type="number"
+      id="pmRatePerHour"
+      name="pmRatePerHour"
+      class="form-control"
+      ngModel
+      required
+    />
+  </div>
+
+  <div class="form-group form-group-button">
+    <button mat-raised-button type="submit" [disabled]="!newProjectForm.valid">
+      Save
+    </button>
+    <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+  </div>
+</form>
+
+<form
+  (ngSubmit)="onUpdateProject(updateProjectForm)"
+  #updateProjectForm="ngForm"
+  *ngIf="editMode && project"
+>
+  <div class="info" *ngIf="editMode">
+    <h1>{{ project.name }}</h1>
+    <h3>{{ project.description }}</h3>
+  </div>
+  <div class="form-group">
+    <label for="addDev">Developer:</label>
+    <select name="addDev" id="addDev" ngModel required>
+      <option *ngFor="let contributor of contributors" [value]="contributor">
+        {{ contributor }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="ratePerHour">Developer rate per hour:</label>
+    <input
+      type="number"
+      id="ratePerHour"
+      name="ratePerHour"
+      class="form-control"
+      ngModel
+      required
+    />
+  </div>
+  <div class="form-group form-group-button">
+    <button
+      mat-raised-button
+      type="submit"
+      [disabled]="!updateProjectForm.valid"
+    >
+      Save
+    </button>
+    <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+  </div>
+</form>
+
+<div class="error" *ngIf="error">
+  <p>{{ error }}</p>
+</div>

@@ -1,0 +1,186 @@
+<div class="card">
+  <mat-card class="mat-elevation-z4">
+    <mat-card-header>
+      <mat-card-title>{{ campaign?.name }}</mat-card-title>
+      <mat-card-subtitle>{{ campaign?.target }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Employees: {{ campaign?.employees?.join(", ") }}</p>
+      <p>Medias: {{ mediaNames }}</p>
+      <p>Start date: {{ campaign?.startDate.toString().split("T")[0] }}</p>
+      <p>End date: {{ campaign?.endDate.toString().split("T")[0] }}</p>
+      <button mat-raised-button (click)="onAddTask()">Create Task</button>
+      <div *ngIf="taskToggle">
+        <form (ngSubmit)="onTaskSubmit()" #tf="ngForm">
+          <div ngModelGroup="taskData" #taskData="ngModelGroup">
+            <div class="form-group">
+              <select ngModel id="employee" name="employee" required>
+                <option *ngFor="let employee of campaign.employees">
+                  {{ employee }}
+                </option>
+              </select>
+              <input
+                type="text"
+                placeholder="Name"
+                id="name"
+                class="form-control"
+                ngModel
+                name="name"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Description"
+                id="description"
+                class="form-control"
+                ngModel
+                name="description"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Due date"
+                id="dueDate"
+                class="form-control"
+                ngModel
+                name="dueDate"
+                required
+              />
+            </div>
+          </div>
+          <button mat-raised-button type="submit" [disabled]="!tf.valid">
+            Submit
+          </button>
+        </form>
+      </div>
+      <!-- <div class="error" *ngIf="error">
+        <p>{{ error }}</p>
+      </div> -->
+    </mat-card-content>
+    <mat-card-actions>
+      <section class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+        <app-campaign-task
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="33%"
+          *ngFor="let task of tasks"
+          [task]="task"
+        ></app-campaign-task>
+      </section>
+      <div *ngIf="!target.likes || error">
+        <button mat-raised-button (click)="toggleKpi()">Set KPI Target</button>
+        <div *ngIf="kpiFormToggle">
+          <form (ngSubmit)="onTargetSubmit()" #kpif="ngForm">
+            <div ngModelGroup="kpiData" #mediaData="ngModelGroup">
+              <div class="form-group">
+                <input
+                  type="number"
+                  placeholder="Target Likes"
+                  id="likes"
+                  class="form-control"
+                  ngModel
+                  name="likes"
+                  min="0"
+                  required
+                />
+                <input
+                  type="number"
+                  placeholder="Target Comments"
+                  id="comments"
+                  class="form-control"
+                  ngModel
+                  name="comments"
+                  min="0"
+                  required
+                />
+                <input
+                  type="number"
+                  placeholder="Target Shares"
+                  id="shares"
+                  class="form-control"
+                  ngModel
+                  name="shares"
+                  min="0"
+                  required
+                />
+                <input
+                  type="number"
+                  placeholder="Target Clicks"
+                  id="clicks"
+                  class="form-control"
+                  ngModel
+                  name="clicks"
+                  min="0"
+                  required
+                />
+                <input
+                  type="number"
+                  placeholder="Target Reach"
+                  id="reach"
+                  class="form-control"
+                  ngModel
+                  name="reach"
+                  min="0"
+                  required
+                />
+              </div>
+            </div>
+            <button mat-raised-button type="submit" [disabled]="!kpif.valid">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+      <div *ngIf="target.likes && !error">
+        <p class="kpiTargets">
+          Target - Likes: {{ target.likes }}, Comments: {{ target.comments }},
+          Shares: {{ target.shares }}, Clicks: {{ target.clicks }}, Reach:
+          {{ target.reach }}
+        </p>
+        <p class="kpiTargets" *ngFor="let m of media">
+          {{ m.name }} -
+          {{
+            m.likes >= target.likes &&
+            m.comments >= target.comments &&
+            m.shares >= target.shares &&
+            m.clicks >= target.clicks &&
+            m.reach >= target.reach
+              ? "Target met"
+              : "Target not met"
+          }}
+        </p>
+        <button mat-raised-button (click)="toggleChart()">View Report</button>
+      </div>
+      <div class="kpiReport">
+        <mat-carousel
+          *ngIf="kpiChartToggle"
+          timings="250ms ease-in"
+          [autoplay]="true"
+          interval="5000"
+          color="accent"
+          maxWidth="auto"
+          proportion="25"
+          slides="5"
+          [loop]="true"
+          [hideArrows]="false"
+          [hideIndicators]="false"
+          [useKeyboard]="true"
+          [useMouseWheel]="false"
+          orientation="ltr"
+        >
+          <mat-carousel-slide
+            #matCarouselSlide
+            *ngFor="let m of media; let i = index"
+            overlayColor="#00000040"
+            [hideOverlay]="false"
+          >
+            <app-kpi-widget [media]="m"></app-kpi-widget>
+          </mat-carousel-slide>
+        </mat-carousel>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<div class="error" *ngIf="error">
+    <p>{{ error }}</p>
+  </div>

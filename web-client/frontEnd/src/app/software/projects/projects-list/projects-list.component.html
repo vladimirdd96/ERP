@@ -1,0 +1,25 @@
+<div class="btns">
+  <button mat-raised-button (click)="onNewProject()">New Project</button>
+  <button mat-raised-button (click)="getUserProjects()">
+    View Your Projects
+  </button>
+</div>
+<div
+  class="content"
+  fxLayout="row wrap"
+  fxLayoutGap="16px grid"
+  *ngIf="!noProjects; else emptyTemplate"
+>
+  <app-project-item
+    fxFlex="25%"
+    fxFlex.xs="100%"
+    fxFlex.sm="33%"
+    *ngFor="let project of projects"
+    [project]="project"
+    [id]="project.id"
+  >
+  </app-project-item>
+</div>
+<ng-template #emptyTemplate>
+  <p>Currently there are no projects for this user</p>
+</ng-template>

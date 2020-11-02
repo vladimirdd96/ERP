@@ -1,0 +1,4 @@
+export enum Roles {
+  MARKETING_MANAGER = 'MARKETING_MANAGER',
+  EMPLOYEE = 'EMPLOYEE',
+}

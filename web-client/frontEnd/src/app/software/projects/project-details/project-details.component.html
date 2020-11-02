@@ -1,0 +1,100 @@
+<div *ngIf="project" class="project-details">
+  <h2>{{ project.name }}</h2>
+  <p>{{ project.description }}</p>
+  <hr />
+    <p class="section-title">Contributors:</p>
+  <ul class="contributors">
+    <li class="singleContributor" *ngFor="let user of project.contributors; let i = index">
+      Contributor{{ i + 1 }} - {{ user.split(" - ")[0] }}
+    </li>
+  </ul>
+  <p class="section-title"> Project tasks:</p>
+  <div class="tasks">
+    <p *ngIf="project.tasks.length === 0">No tasks for this project at this moment.</p>
+    <div class="project-tasks" *ngFor="let task of project.tasks">
+      <h4>Task name: {{task.name}}</h4>
+      <h5>Task description: {{task.description}}</h5>
+      <h5>Task status: {{task.status}}</h5>
+    </div>
+  </div>
+  <div *ngIf="projectRequested">
+    <h3>{{ reportType }}</h3>
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <div class="form-group">
+        <label for="startTime">Start time</label>
+        <input
+          class="form-control"
+          type="date"
+          name="startTime"
+          id="startTime"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="endTime">End time</label>
+        <input
+          class="form-control"
+          type="date"
+          name="endTime"
+          id="endTime"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group form-group-button">
+        <button mat-raised-button type="submit" [disabled]="!form.valid">
+          Save
+        </button>
+        <button mat-raised-button type="button" (click)="onCancel()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="details-buttons" *ngIf="!projectRequested">
+    <button mat-raised-button (click)="onEditProject()">Edit</button>
+    <button mat-raised-button (click)="onGetProjectReport()">
+      Get Project Report
+    </button>
+    <button mat-raised-button (click)="onGetFinancialReport()">
+      Get Financial Report
+    </button>
+  </div>
+</div>
+<hr>
+<div class="projectReport" *ngIf="projectReport">
+  <ul class="reports">
+    <li *ngFor="let user of projectReport">
+      User: {{ user[0] }}:
+      <br />
+      <p *ngFor="let object of user[1]">
+        <strong>Task name and status:</strong> {{ object.taskNameAndStatus }}
+        <br />
+        <strong> Working Hours: {{ object.workingHours }}</strong>
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="projectReport" *ngIf="financialReport">
+  <ul class="reports">
+    <li *ngFor="let user of financialReport">
+      User: {{ user[0] }}:
+      <br />
+      <p *ngFor="let object of user[1]">
+        <strong>Rate per hour</strong> {{ object.ratePerHour.toFixed(2) }} lv.
+        <br />
+        <strong>Paycheck per hour:</strong>
+        {{ object.paycheckPerHour.toFixed(2) }} lv.
+        <br />
+        <strong>Working hours:</strong> {{ object._workingHours }}
+        <br />
+        <strong>Profit</strong> {{ object.profit.toFixed(2) }} lv.
+        <strong>Loss</strong> {{ object.loss.toFixed(2) }} lv.
+      </p>
+    </li>
+  </ul>
+</div>
+<div class="error" *ngIf="error">
+  <p>{{ error }}</p>
+</div>

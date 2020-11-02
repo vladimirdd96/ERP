@@ -1,0 +1,865 @@
+http:
+  port: 8081
+admin:
+  port: 9876
+  hostname: gateway
+apiEndpoints:
+  adminApi:
+    host: '*'
+    methods:
+      - PUT
+      - GET
+      - POST
+      - DELETE
+  profile-profileusersme:
+    host: '*'
+    path: /profile/users/me
+    methods:
+      - GET
+  software-project-taskstask:
+    host: '*'
+    path: /project-tasks/task
+    methods:
+      - POST
+  auth-apiusers:
+    host: '*'
+    path: /api/users
+    methods:
+      - POST
+      - POST
+      - GET
+  auth-apitoken:
+    host: '*'
+    path: /api/token
+    methods:
+      - POST
+  software-sdusersprojects:
+    host: '*'
+    path: /sdusers/projects
+    methods:
+      - GET
+  software-projectscreate-project:
+    host: '*'
+    path: /projects/create-project
+    methods:
+      - POST
+  software-sdusersasd:
+    host: '*'
+    path: /sdusers/asd
+    methods:
+      - GET
+  software-projectsprojects:
+    host: '*'
+    path: /projects/projects
+    methods:
+      - GET
+  software-projectsuser-projects:
+    host: '*'
+    path: /projects/user-projects
+    methods:
+      - GET
+  'software-projectsproject-details:id':
+    host: '*'
+    path: '/projects/project-details/:id'
+    methods:
+      - GET
+  software-taskstask:
+    host: '*'
+    path: /tasks/task
+    methods:
+      - POST
+  software-taskscreate-task:
+    host: '*'
+    path: /tasks/create-task
+    methods:
+      - POST
+  'software-taskstask-details:id':
+    host: '*'
+    path: '/tasks/task-details/:id'
+    methods:
+      - GET
+  software-taskschange-status:
+    host: '*'
+    path: /tasks/change-status
+    methods:
+      - POST
+  'software-taskschange-status:id':
+    host: '*'
+    path: '/tasks/change-status/:id'
+    methods:
+      - POST
+  'software-taskstrack-time:id':
+    host: '*'
+    path: '/tasks/track-time/:id'
+    methods:
+      - POST
+  software-projectsadd-developer:
+    host: '*'
+    path: /projects/add-developer
+    methods:
+      - POST
+  'software-projectsadd-developer:id':
+    host: '*'
+    path: '/projects/add-developer/:id'
+    methods:
+      - POST
+  'software-tasksproject-report:id':
+    host: '*'
+    path: '/tasks/project-report/:id'
+    methods:
+      - GET
+  'software-tasksfinancial-report:id':
+    host: '*'
+    path: '/tasks/financial-report/:id'
+    methods:
+      - GET
+  'software-projectsfinancial-report:id':
+    host: '*'
+    path: '/projects/financial-report/:id'
+    methods:
+      - GET
+  'software-sduserstrack-time:id':
+    host: '*'
+    path: '/sdusers/track-time/:id'
+    methods:
+      - POST
+  'software-sdusersfinancial-report:id':
+    host: '*'
+    path: '/sdusers/financial-report/:id'
+    methods:
+      - GET
+  software-sdusersfinancial-report:
+    host: '*'
+    path: /sdusers/financial-report
+    methods:
+      - GET
+  software-sdusersusers:
+    host: '*'
+    path: /sdusers/users
+    methods:
+      - POST
+  software-sduserstrack-time:
+    host: '*'
+    path: /sdusers/track-time
+    methods:
+      - POST
+  software-projectsproject-report:
+    host: '*'
+    path: /projects/project-report
+    methods:
+      - GET
+  'software-projectsproject-report:id':
+    host: '*'
+    path: '/projects/project-report/:id'
+    methods:
+      - GET
+  'software-projectsprofit-loss-report:id':
+    host: '*'
+    path: '/projects/profit-loss-report/:id'
+    methods:
+      - GET
+  software-projects:
+    host: '*'
+    path: /projects
+    methods:
+      - POST
+      - GET
+  'software-projects:id':
+    host: '*'
+    path: '/projects/:id'
+    methods:
+      - GET
+  'software-projects:idcontributors':
+    host: '*'
+    path: '/projects/:id/contributors'
+    methods:
+      - PATCH
+  'software-projects:idproject-report':
+    host: '*'
+    path: '/projects/:id/project-report'
+    methods:
+      - GET
+  'software-projects:idfinancial-report':
+    host: '*'
+    path: '/projects/:id/financial-report'
+    methods:
+      - GET
+  software-tasks:
+    host: '*'
+    path: /tasks
+    methods:
+      - POST
+      - GET
+  'software-tasks:id':
+    host: '*'
+    path: '/tasks/:id'
+    methods:
+      - GET
+  'software-tasks:idstatus':
+    host: '*'
+    path: '/tasks/:id/status'
+    methods:
+      - PATCH
+  'software-sdusers:idwork':
+    host: '*'
+    path: '/sdusers/:id/work'
+    methods:
+      - POST
+  'software-sdusers:idtask:taskIdwork':
+    host: '*'
+    path: '/sdusers/:id/task/:taskId/work'
+    methods:
+      - POST
+  software-sduserswork:
+    host: '*'
+    path: /sdusers/work
+    methods:
+      - POST
+  'software-tasks:idwork':
+    host: '*'
+    path: '/tasks/:id/work'
+    methods:
+      - PATCH
+  software-sdusers:
+    host: '*'
+    path: /sdusers
+    methods:
+      - GET
+  marketing-campaigns:
+    host: '*'
+    path: /campaigns
+    methods:
+      - POST
+      - GET
+  'marketing-campaigns:id':
+    host: '*'
+    path: '/campaigns/:id'
+    methods:
+      - GET
+  'marketing-campaigns:idemployee':
+    host: '*'
+    path: '/campaigns/:id/employee'
+    methods:
+      - POST
+  'marketing-campaigns:idmedia':
+    host: '*'
+    path: '/campaigns/:id/media'
+    methods:
+      - POST
+      - GET
+  'marketing-campaigns:idreport':
+    host: '*'
+    path: '/campaigns/:id/report'
+    methods:
+      - POST
+  'marketing-campaigns:campaignIdtasks':
+    host: '*'
+    path: '/campaigns/:campaignId/tasks'
+    methods:
+      - POST
+      - GET
+  'marketing-campaigns:campaignIdtasks:taskId':
+    host: '*'
+    path: '/campaigns/:campaignId/tasks/:taskId'
+    methods:
+      - GET
+      - PATCH
+  marketing-mdusers:
+    host: '*'
+    path: /mdusers
+    methods:
+      - GET
+  marketing-mdusersmetasks:
+    host: '*'
+    path: /mdusers/me/tasks
+    methods:
+      - GET
+serviceEndpoints:
+  adminApi:
+    urls:
+      - 'http://gateway:9876'
+  profile-service:
+    url: 'http://localhost:3001/'
+  software-service:
+    url: 'http://localhost:3002/'
+  auth-service:
+    url: 'http://localhost:3000/'
+  marketing-service:
+    url: 'http://localhost:3003/'
+policies:
+  - key-auth
+  - jwt
+  - log
+  - oauth2
+  - proxy
+pipelines:
+  admin:
+    apiEndpoints:
+      - adminApi
+    policies:
+      - key-auth:
+          - disableQueryParam: true
+      - proxy:
+          - action:
+              serviceEndpoint: adminApi
+              changeOrigin: true
+  profile-profileusersme:
+    apiEndpoints:
+      - profile-profileusersme
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: profile-service
+  software-project-taskstask:
+    apiEndpoints:
+      - software-project-taskstask
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  auth-apiusers:
+    apiEndpoints:
+      - auth-apiusers
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: auth-service
+  auth-apitoken:
+    apiEndpoints:
+      - auth-apitoken
+    policies:
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: auth-service
+  software-projectscreate-project:
+    apiEndpoints:
+      - software-projectscreate-project
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-sdusersasd:
+    apiEndpoints:
+      - software-sdusersasd
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-projectsprojects:
+    apiEndpoints:
+      - software-projectsprojects
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-projectsuser-projects:
+    apiEndpoints:
+      - software-projectsuser-projects
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-projectsproject-details:id':
+    apiEndpoints:
+      - 'software-projectsproject-details:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-taskstask:
+    apiEndpoints:
+      - software-taskstask
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-taskscreate-task:
+    apiEndpoints:
+      - software-taskscreate-task
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-taskstask-details:id':
+    apiEndpoints:
+      - 'software-taskstask-details:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-taskschange-status:
+    apiEndpoints:
+      - software-taskschange-status
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-taskschange-status:id':
+    apiEndpoints:
+      - 'software-taskschange-status:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-taskstrack-time:id':
+    apiEndpoints:
+      - 'software-taskstrack-time:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-projectsadd-developer:
+    apiEndpoints:
+      - software-projectsadd-developer
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-projectsadd-developer:id':
+    apiEndpoints:
+      - 'software-projectsadd-developer:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-tasksproject-report:id':
+    apiEndpoints:
+      - 'software-tasksproject-report:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-tasksfinancial-report:id':
+    apiEndpoints:
+      - 'software-tasksfinancial-report:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-projectsfinancial-report:id':
+    apiEndpoints:
+      - 'software-projectsfinancial-report:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-sduserstrack-time:id':
+    apiEndpoints:
+      - 'software-sduserstrack-time:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-sdusersfinancial-report:id':
+    apiEndpoints:
+      - 'software-sdusersfinancial-report:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-sdusersfinancial-report:
+    apiEndpoints:
+      - software-sdusersfinancial-report
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-sdusersusers:
+    apiEndpoints:
+      - software-sdusersusers
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-sduserstrack-time:
+    apiEndpoints:
+      - software-sduserstrack-time
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-projectsproject-report:
+    apiEndpoints:
+      - software-projectsproject-report
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-projectsproject-report:id':
+    apiEndpoints:
+      - 'software-projectsproject-report:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-projectsprofit-loss-report:id':
+    apiEndpoints:
+      - 'software-projectsprofit-loss-report:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-projects:
+    apiEndpoints:
+      - software-projects
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-projects:id':
+    apiEndpoints:
+      - 'software-projects:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-projects:idcontributors':
+    apiEndpoints:
+      - 'software-projects:idcontributors'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-tasks:id':
+    apiEndpoints:
+      - 'software-tasks:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'marketing-campaigns:campaignIdtasks:taskId':
+    apiEndpoints:
+      - 'marketing-campaigns:campaignIdtasks:taskId'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: marketing-service
+  'software-tasks:idwork':
+    apiEndpoints:
+      - 'software-tasks:idwork'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  marketing-mdusers:
+    apiEndpoints:
+      - marketing-mdusers
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: marketing-service
+  marketing-mdusersmetasks:
+    apiEndpoints:
+      - marketing-mdusersmetasks
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: marketing-service
+  marketing-campaigns:
+    apiEndpoints:
+      - marketing-campaigns
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: marketing-service
+  'marketing-campaigns:id':
+    apiEndpoints:
+      - 'marketing-campaigns:id'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: marketing-service
+  'marketing-campaigns:idemployee':
+    apiEndpoints:
+      - 'marketing-campaigns:idemployee'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: marketing-service
+  'marketing-campaigns:idmedia':
+    apiEndpoints:
+      - 'marketing-campaigns:idmedia'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: marketing-service
+  'marketing-campaigns:idreport':
+    apiEndpoints:
+      - 'marketing-campaigns:idreport'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: marketing-service
+  'marketing-campaigns:campaignIdtasks':
+    apiEndpoints:
+      - 'marketing-campaigns:campaignIdtasks'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: marketing-service
+  software-sdusers:
+    apiEndpoints:
+      - software-sdusers
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-projects:idproject-report':
+    apiEndpoints:
+      - 'software-projects:idproject-report'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-projects:idfinancial-report':
+    apiEndpoints:
+      - 'software-projects:idfinancial-report'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  software-tasks:
+    apiEndpoints:
+      - software-tasks
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service
+  'software-tasks:idstatus':
+    apiEndpoints:
+      - 'software-tasks:idstatus'
+    policies:
+      - jwt:
+          - action:
+              secretOrPublicKey: erpsecret
+              checkCredentialExistence: false
+      - proxy:
+          - action:
+              changeOrigin: true
+              serviceEndpoint: software-service

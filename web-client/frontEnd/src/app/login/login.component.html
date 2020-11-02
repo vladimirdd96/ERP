@@ -1,0 +1,33 @@
+<div class="login-page">
+  <div class="form" *ngIf="!token; else loggedIn">
+    <form (ngSubmit)="onLogin(form)" #form="ngForm" class="login-form">
+      <p>Sign in</p>
+      <input
+        id="email"
+        name="email"
+        email
+        type="email"
+        placeholder="Email"
+        required
+        email
+        ngModel
+      />
+      <input
+        id="password"
+        name="password"
+        type="password"
+        placeholder="Password"
+        required
+        minlength="8"
+        ngModel
+      />
+      <button type="submit" [disabled]="!form.valid">Login</button>
+      <div class="error" *ngIf="error">
+        <p>{{ error }}</p>
+      </div>
+    </form>
+  </div>
+  <ng-template #loggedIn>
+    <p>You are already logged in.</p>
+  </ng-template>
+</div>

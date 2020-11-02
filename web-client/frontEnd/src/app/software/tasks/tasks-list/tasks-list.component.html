@@ -1,0 +1,26 @@
+<div class="btns">
+  <button  mat-raised-button *ngIf="userLogged.role === 'PROJECT_MANAGER'" (click)="onNewTask()">
+    New Task
+  </button>
+  <button  mat-raised-button (click)="getUserTasks()">View Your Tasks</button>
+</div>
+<div
+  class="content"
+  fxLayout="row wrap"
+  fxLayoutGap="16px grid"
+  *ngIf="!noTasks; else emptyTemplate"
+>
+  <app-task-item
+    fxFlex="25%"
+    fxFlex.xs="100%"
+    fxFlex.sm="33%"
+    *ngFor="let task of tasks"
+    [task]="task"
+    [id]="task.id"
+  >
+  </app-task-item>
+</div>
+
+<ng-template #emptyTemplate>
+  <p>Currently there are no tasks for this user</p>
+</ng-template>

@@ -1,0 +1,11 @@
+<div *ngIf="task" class="task-details">
+  <h2>Task name: {{ task.name }}</h2>
+  <p>Task description: {{ task.description }}</p>
+  <p>Task status: {{ task.status }}</p>
+  <p>Project name: {{ task.project.name }}</p>
+  <p>Project description: {{ task.project.description }}</p>
+  <div class="details-buttons">
+    <button mat-raised-button (click)="onChangeStatus()">Change status</button>
+    <button mat-raised-button (click)="onTrackTime()">Track Time</button>
+  </div>
+</div>

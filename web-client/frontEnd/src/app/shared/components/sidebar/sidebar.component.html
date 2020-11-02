@@ -1,0 +1,35 @@
+<mat-nav-list>
+  <div class="profile-card">
+    <div class="header" *ngIf="loggedIn; else notLoggedIn">
+      <h2>{{ userToken.email }}</h2>
+      <h4>{{ userToken.role }}</h4>
+    </div>
+    <ng-template #notLoggedIn>
+      <h2>ERP system</h2>
+    </ng-template>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h2 matSubheader>Pages</h2>
+
+  <a mat-list-item routerLink="/" routerLinkActive="list-item-active"
+    >Dashboard</a
+  >
+  <a
+    mat-list-item
+    routerLink="/login"
+    routerLinkActive="list-item-active"
+    *ngIf="!loggedIn"
+    >Login</a
+  >
+  <a
+    *ngIf="userToken.role === 'Admin' || !loggedIn"
+    mat-list-item
+    routerLink="/register"
+    routerLinkActive="list-item-active"
+    >Register</a
+  >
+
+  <mat-divider></mat-divider>
+</mat-nav-list>

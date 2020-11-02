@@ -1,0 +1,84 @@
+<section>
+  <div>
+    <button
+      *ngIf="userToken.role === 'MARKETING_MANAGER'"
+      class="top-button"
+      mat-raised-button
+      (click)="onCreateCampaign()"
+    >
+      Create Campaign
+    </button>
+    <button
+      *ngIf="userToken.role === 'MARKETING_MANAGER'"
+      class="top-button"
+      mat-raised-button
+      (click)="clearError()"
+      routerLink="campaigns"
+    >
+      Show Campaigns
+    </button>
+    <button
+      *ngIf="userToken.role === 'EMPLOYEE'"
+      class="top-button"
+      mat-raised-button
+      routerLink="tasks"
+    >
+      Show Tasks
+    </button>
+  </div>
+</section>
+<div *ngIf="creatingOpen">
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div
+      id="campaign-data"
+      ngModelGroup="campaignData"
+      #campaignData="ngModelGroup"
+    >
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Name"
+          id="name"
+          class="form-control"
+          ngModel
+          name="name"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Target"
+          id="target"
+          class="form-control"
+          ngModel
+          name="target"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Start date"
+          id="startDate"
+          class="form-control"
+          ngModel
+          name="startDate"
+          required
+        />
+        <input
+          type="text"
+          placeholder="End date"
+          id="endDate"
+          class="form-control"
+          ngModel
+          name="endDate"
+          required
+        />
+      </div>
+    </div>
+    <button mat-raised-button type="submit" [disabled]="!f.valid">
+      Submit
+    </button>
+  </form>
+</div>
+<div class="error" *ngIf="error">
+  <p>{{ error }}</p>
+</div>
+<router-outlet></router-outlet>

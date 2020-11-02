@@ -1,0 +1,57 @@
+<div class="login-page">
+  <ng-container *ngIf="!firstUser && isAdmin; then notFirst; else first">
+  </ng-container>
+  <ng-template #notFirst>
+    <div class="form">
+      <form (ngSubmit)="onRegister(form)" #form="ngForm" class="register-form">
+        <p>Registration form:</p>
+        <input id="fullname" name="fullname" type="text" placeholder="full name" ngModel required />
+        <input id="jobTitle" name="jobTitle" type="text" placeholder="jobTitle" ngModel required />
+        <select ngModel id="department" name="department" required (change)="onChange($event)">
+          <option value="" disabled selected>Select your option</option>
+
+          <option *ngFor="let department of departments" [value]="department.toUpperCase()">
+            {{ department }}
+          </option>
+        </select>
+        <input id="salary" name="salary" type="text" placeholder="salary" ngModel required />
+        <input id="bornon" name="bornon" type="text" placeholder="bornon" ngModel required />
+
+        <select id="role" name="role" required ngModel>
+          <option value="" disabled selected>Select your option</option>
+          <option [value]="role.toUpperCase().split(' ').join('_')" *ngFor="let role of roles">
+            {{ role }}
+          </option>
+        </select>
+        <input id="email" name="email" type="email" placeholder="email address" ngModel required email />
+        <button type="submit" [disabled]="!form.valid">Register user</button>
+      </form>
+      <div class="error" *ngIf="error">
+        <p>{{ error }}</p>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #first>
+    <ng-container *ngIf="firstUser; then firstUserTemplate; else isAdministrator">
+    </ng-container>
+    <ng-template #firstUserTemplate>
+    <div class="form2">
+        <form (ngSubmit)="onRegister(f)" #f="ngForm" class="register-form2">
+          <p>Registration form:</p>
+          <input class=form-input id="fullname" name="fullname" type="text" placeholder="full name" ngModel required />
+
+          <input class=form-input id="email" name="email" type="email" placeholder="email address" ngModel required
+            email />
+          <button class="form-button" type="submit" [disabled]="!f.valid">Register user</button>
+        </form>
+        <div class="form-error" *ngIf="error"> 
+          <p>{{ error }}</p>
+        </div>
+      </div>
+      </ng-template>
+    <ng-template #isAdministrator>
+      <p>Only administrator is allowed to add new users of the ERP system!</p>
+    </ng-template>
+  </ng-template>
+</div>

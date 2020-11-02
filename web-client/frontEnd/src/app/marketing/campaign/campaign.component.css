@@ -1,0 +1,56 @@
+.card {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px;
+}
+
+.mat-card {
+    /* max-width: Calc(100% - 1rem);
+    min-width: Calc(100% - 1rem);
+    height: 270px;
+    min-height: Calc(100% - 1rem);
+    max-height: Calc(100% - 1rem); */
+}
+
+.mat-raised-button {
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 40%;
+    margin-bottom: 5px !important;
+}
+
+.mat-card-header {
+  cursor: pointer;
+}
+
+/* .mat-card-header.div {
+    margin: 0 !important;
+} */
+
+/* .mat-card-header-text {
+    margin: 0 !important;
+} */
+
+.mat-card-title {
+  font-size: medium;
+}
+
+.example-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.error {
+  width: 70%;
+  border: 2px solid red;
+  text-align: center;
+  padding: 10px 30px;
+  /* border-radius: 10px; */
+  background-color: #ed456c;
+}
+
+.error p {
+  margin: 0;
+  color: #ffffff;
+}

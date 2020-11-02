@@ -1,0 +1,20 @@
+<div class="btns">
+  <button
+    mat-raised-button
+    routerLinkActive="active"
+    routerLink="/software/projects"
+    *ngIf="userLogged.role === 'PROJECT_MANAGER'"
+  >
+    Projects
+  </button>
+  <button
+    mat-raised-button
+    routerLinkActive="active"
+    routerLink="/software/tasks"
+  >
+    Tasks
+  </button>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>

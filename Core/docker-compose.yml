@@ -1,0 +1,156 @@
+version: "3.8"
+
+services:
+  zoo1:
+    image: zookeeper:3.4.9
+    ports:
+      - 2181:2181
+    environment:
+        ZOO_MY_ID: 1
+        ZOO_PORT: 2181
+        ZOO_SERVERS: server.1=zoo1:2888:3888
+  kafka1:
+    image: confluentinc/cp-kafka:5.2.1
+    hostname: kafka1
+    ports:
+      - 9092:9092
+    links: 
+      - zoo1  
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka1:9092
+      KAFKA_ZOOKEEPER_CONNECT: zoo1:2181
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    depends_on:
+      - zoo1
+  redis:
+    container_name: redisdocker
+    hostname: redis
+    image: redis
+    command: redis-server
+    ports:
+      - 6379:6379
+  gateway:
+    container_name: gateway
+    build: ../gateway
+    ports:
+      - 8081:8081
+      - 9876:9876
+    volumes:
+      - ../gateway/:/app
+      - /app/node_modules
+  erp-api:
+    container_name: backend
+    build: ../auth
+    command: npm run start:dev
+    working_dir: /app
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres 
+      POSTGRES_HOST: postgres-auth
+    links:
+      - postgres-auth
+      - gateway
+      - kafka1
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../auth:/app
+      - /app/node_modules
+  postgres-auth:
+    image: postgres-auth
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres 
+      POSTGRES_HOST: postgres
+    build: ../auth/postgres
+    ports:
+      - "5432:5432"
+  profile-api:
+    container_name: profile_backend
+    build: ../profile
+    command: npm run start:dev
+    working_dir: /app
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres 
+      POSTGRES_HOST: postgres-profile
+    links:
+      - postgres-profile
+      - gateway
+      - kafka1
+    ports:
+      - "3001:3000"
+    volumes:
+      - ../profile/:/app
+      - /app/node_modules
+  postgres-profile:
+    image: postgres-profile
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres 
+      POSTGRES_HOST: postgres-profile
+    build: ../profile/postgres
+    ports:
+      - "5433:5432"
+  sd-api:
+    container_name: sd_backend
+    build: ../software-development
+    command: npm run start:dev
+    working_dir: /app
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres 
+      POSTGRES_HOST: postgres-sd
+    links:
+      - postgres-sd
+      - gateway
+      - kafka1
+    ports:
+      - "3002:3000"
+    volumes:
+      - ../software-development/:/app
+      - /app/node_modules
+  postgres-sd:
+    image: postgres-sd
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres 
+      POSTGRES_HOST: postgres-sd
+    build: ../software-development/postgres
+    ports:
+      - "5434:5432"
+  marketing-department:
+    container_name: marketing
+    build: ../marketing
+    command: npm run start:dev
+    working_dir: /app
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_HOST: postgres-marketing
+    depends_on:
+      - postgres-marketing
+      - gateway
+      - kafka1
+    ports:
+      - '3003:3000'
+    volumes:
+      - ../marketing/:/app
+      - /app/node_modules
+  postgres-marketing:
+    image: postgres-marketing
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_HOST: postgres-marketing
+    build: ../marketing/postgres
+    ports:
+      - '5435:5432'

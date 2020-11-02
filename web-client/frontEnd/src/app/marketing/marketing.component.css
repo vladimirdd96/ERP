@@ -1,0 +1,34 @@
+.campaignsList {
+  display: flex;
+}
+
+.form-group {
+  display: flex;
+  padding: 5px;
+}
+
+label {
+  padding: 5px;
+}
+
+.form-control {
+  display: flex;
+}
+
+.top-button {
+  margin-right: 20px;
+}
+
+.error {
+  width: 70%;
+  border: 2px solid red;
+  text-align: center;
+  padding: 10px 30px;
+  /* border-radius: 10px; */
+  background-color: #ed456c;
+}
+
+.error p {
+  margin: 0;
+  color: #ffffff;
+}

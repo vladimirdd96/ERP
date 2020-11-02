@@ -1,0 +1,47 @@
+<form (ngSubmit)="onNewTask(newTaskForm)" #newTaskForm="ngForm">
+  <h2>Create new task</h2>
+  <div class="form-group">
+    <label for="name">Task name:</label>
+    <input type="text" id="name" name="name" class="form-control" ngModel required minlength="6" />
+  </div>
+  <div class="form-group">
+    <label for="description">Task desciption:</label>
+    <input
+      type="text"
+      id="description"
+      name="description"
+      class="form-control"
+      ngModel
+      required
+      disbled
+    />
+  </div>
+  <div class="form-group">
+    <label for="projectId">Project</label>
+    <select name="projectId" id="devId" (change)="onProjectChange($event)" ngModel required>
+      <option value="" disabled selected>Select project</option>
+      <option [value]="project" *ngFor="let project of currentProjects">
+        {{ project.split(" - ")[0] }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="devId">Task assingee</label>
+    <select name="devId" id="devId" ngModel required>
+      <option value="" disabled selected>Select developer</option>
+      <option [value]="developer.split(' - ')[2]" *ngFor="let developer of developers">
+        {{ developer.split(" - ")[0] }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group form-group-button">
+    <button mat-raised-button type="submit" [disabled]="!newTaskForm.valid">
+      Save
+    </button>
+    <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+  </div>
+</form>
+
+<div class="error" *ngIf="error">
+  <p>{{ error }}</p>
+</div>
