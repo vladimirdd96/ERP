@@ -1,16 +1,22 @@
-Enterprise Resource Planning или ERP система, която има за цел централизиране на бизнеса на една компания. 
-За момента системата е с два департамента, Софтуенрен департамент и Маркетинг отдел, но системата може лесно да се разшири. 
-
-Регистриране:
-
-Първия потребител който се регистрира е админ-а, чиято роля е да регистрира останалите потребители. Първото регистриране
-изисква името на админа и емайл-а, докато паролата се генерира с генератор и изпраща чрез емайл. 
-
-За да регистираме потребители след като имаме админ регистриран, трябва да се логнем с администраторския акаунт, където има форма за регистриране на нормални потребители. В този случай, когато регистрираме някой, паролата се автогенерира и изпраща по емайл.
-
-Имаме 2 различни типа потребители,
-Project manager и Developer. Основната роля на Продцект менаджера, е да създава проекти и таскове за проектите които е създал, да добавя регистрирани девелопери в сиситема да работят
-по техния проект, да вади репорти за прокета кой колко е работил и по какви таскове, както и финансов репорт за определен период от време, в него има информация
-в дадения период от време, колко часа са тракнати, колко е заплатата на девелопера на час, както и колко плаща на час на компанията, на девелопера да работи по проекта.
-Съответно има профит/лос репорт за всеки човек, т.е колко е заработил за компанията в дадения период, и колко компанията му е платила.
-Девелопера има достъп до тасковете, които са му асайнати, и има възможност да сменя статуса и да траква часове по тасковете, по които работи.
+Internship Experience: Enterprise Resource Planning (ERP) System
+During my internship, I undertook the responsibility of conceptualizing and implementing an Enterprise Resource Planning (ERP) system. This system aimed to centralize the operations of the company and is currently deployed across two departments: the Software Department and the Marketing Division. Notably, the system is designed for seamless expansion.
+User Registration Process:
+* 		Administrator Registration:
+    * The first user to register assumes the role of an administrator.
+    * Required details: admin's name and email.
+    * The system generates a password, dispatched via email.
+* 		Regular User Registration:
+    * After the administrator's registration, users can be registered through the administrative account.
+    * The registration form for regular users includes auto-generated passwords sent via email.
+User Types:
+The ERP system establishes two distinct user types:
+* 		Project Managers:
+    * Primary role: Creation of projects and tasks.
+    * Addition of registered developers to collaborate on projects.
+    * Extraction of detailed reports on project work allocation and task specifics.
+        * Generation of financial reports for a specified timeframe.
+        * Financial report details tracked hours, developer hourly wages, and the company's payment to the developer.
+        * A profit/loss report is generated, elucidating earnings versus disbursements for each individual.
+* 		Developers:
+    * Access to assigned tasks.
+    * Ability to alter task statuses and track hours for engaged tasks.
